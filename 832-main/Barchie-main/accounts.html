@@ -122,16 +122,39 @@
             <p class="account__tab"><i class="fi fi-rs-exit"></i> Logout</p>
           </div>
           <div class="tabs__content">
-            <div class="tab__content active-tab" content id="dashboard">
-              <h3 class="tab__header">Hi Client</h3>
-              <div class="tab__body">
-                <p class="tab__description">
-                  From your account dashboard. you can easily check & view your
-                  recent order, manage your shipping and billing addresses and
-                  edit your password and account details
-                </p>
-              </div>
-            </div>
+            <!-- ... (previous HTML remains the same) ... -->
+
+<div class="tab__content active-tab" content id="dashboard">
+  <h3 class="tab__header">Hi <span id="userGreeting">Client</span></h3>
+  <div class="tab__body">
+    <p class="tab__description">
+      From your account dashboard. you can easily check & view your
+      recent order, manage your shipping and billing addresses and
+      edit your password and account details
+    </p>
+  </div>
+</div>
+
+<!-- ... (rest of the HTML remains the same) ... -->
+
+<div class="tab__content" content id="update-profile">
+  <h3 class="tab__header">Update Profile</h3>
+  <div class="tab__body">
+    <form class="form grid" id="updateProfileForm">
+      <input
+        type="text"
+        placeholder="Username"
+        class="form__input"
+        id="usernameInput"
+      />
+      <div class="form__btn">
+        <button type="submit" class="btn btn--md">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ... (remaining HTML stays the same) ... -->
             <div class="tab__content" content id="orders">
               <h3 class="tab__header">Your Orders</h3>
               <div class="tab__body">
@@ -354,5 +377,6 @@
 
     <!--=============== MAIN JS ===============-->
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/acc.js"></script>
   </body>
 </html>
