@@ -112,3 +112,58 @@ tabs.forEach((tab) => {
     tab.classList.add("active-tab");
   });
 });
+
+let cartCounter = 0;
+
+// Function to update the cart counter
+function updateCartCounter() {
+  document.querySelector('.cart__counter').textContent = cartCounter;
+}
+
+// Add event listeners to the "Add to Cart" buttons
+document.querySelectorAll('.action__btn.cart__btn').forEach((button) => {
+  button.addEventListener('click', () => {
+    cartCounter++;
+    updateCartCounter();
+  });
+});
+// Function to display the cart items
+function displayCartItems() {
+  const cartContents = document.querySelector('.cart__contents');
+  const cartTable = document.createElement('table');
+  cartTable.classList.add('cart__table');
+  cartTable.innerHTML = `
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  `;
+  cartContents.appendChild(cartTable);
+  const tbody = cartTable.querySelector('tbody');
+  cart.items.forEach((item, index) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${item.title}</td>
+      <td>${item.quantity}</td>
+      <td>${item.price}</td>
+      <td>${item.quantity * item.price}</td>
+      <td><button class="remove__btn" data-index="${index}">Remove</button></td>
+    `;
+    tbody.appendChild(row);
+  });
+}
+
+// Call the displayCartItems function when the cart contents are toggled
+document.querySelector('.cart__link').addEventListener('click', () => {
+  const cartContents = document.querySelector('.cart__contents');
+  if (cartContents.classList.contains('show')) {
+    displayCartItems();
+  }
+});
